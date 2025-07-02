@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
-import { Layout, Menu, Carousel, Calendar, Table, Typography, Button, Image } from "antd";
+import { Layout, Menu, Carousel, Typography, Button, Alert } from "antd";
 import { Link } from "react-router-dom";
 import { Header, Content, Footer } from "antd/es/layout/layout";
 import axios from "axios";
 
 const { Title } = Typography;
 
-// 🔧 Carrusel más pequeño
-const contentStyle: React.CSSProperties = {
-  margin: 0,
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
+// Estilo para las imágenes del carrusel
+const imgStyle: React.CSSProperties = {
+  width: '100%',
+  maxHeight: '300px',
+  objectFit: 'cover',
 };
 
 export default function App() {
@@ -50,7 +47,10 @@ export default function App() {
 
   const menuItems = [
     { key: "1", label: "Home" },
-    { key: "2", label: "Cursos" },
+    { key: "2", label: "Listado" },
+    { key: "3", label: "Crear" },
+    { key: "4", label: "Estadisticas" },
+    { key: "5", label: "Informacion" },
   ];
 
   return (
@@ -61,15 +61,35 @@ export default function App() {
 
       <Content style={{ padding: "0 50px" }}>
         <div style={{ padding: 24, minHeight: 380 }}>
-          <Title>Bienvenidos al Portal de Cursos</Title>
+          <Title>Bienvenidos al Modulo de Post</Title>
 
-          {/* 🎯 Carrusel con altura moderada */}
-          <Carousel arrows infinite={false}>
-            <div><h3 style={contentStyle}>1</h3></div>
-            <div><h3 style={contentStyle}>2</h3></div>
-            <div><h3 style={contentStyle}>3</h3></div>
-            <div><h3 style={contentStyle}>4</h3></div>
-          </Carousel>
+          {/* Contenedor adaptable y centrado */}
+          <div style={{ maxWidth: '90vw', width: '100%', margin: '0 auto' }}>
+            <Carousel arrows infinite={false}>
+              <div>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzV8QzZ0dmMcfPPBOmYGr0giKHbnCft-a_tveLDUfAs8DGRPKqbMCaxOq4XGVkkjuCqyU&usqp=CAU"
+                  alt="Slide 1"
+                  style={imgStyle}
+                />
+              </div>
+              <div>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzV8QzZ0dmMcfPPBOmYGr0giKHbnCft-a_tveLDUfAs8DGRPKqbMCaxOq4XGVkkjuCqyU&usqp=CAU"
+                  alt="Slide 2"
+                  style={imgStyle}
+                />
+              </div>
+              <div>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzV8QzZ0dmMcfPPBOmYGr0giKHbnCft-a_tveLDUfAs8DGRPKqbMCaxOq4XGVkkjuCqyU&usqp=CAU"
+                  alt="Slide 3"
+                  style={imgStyle}
+                />
+              </div>
+            </Carousel>
+          </div>
+          <Alert message="Recuerda: Cada post debe tener título y contenido." type="warning"/>
         </div>
       </Content>
 
